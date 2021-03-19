@@ -1,0 +1,14 @@
+<div class="index">
+    <div class="header">
+        <p class="titulo">SALNE</p>
+        <p class="sub-titulo">Sistema de Administración para Librerías Nacionales Estandarizado</p>
+    </div>
+    <a href="catalogo"><button class="btn-index">Ingresar</button></a>
+</div>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/index.css' }}''>");
+    });
+</script>

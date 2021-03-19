@@ -1,0 +1,16 @@
+<h1 class="titulo">Eliminar género</h1><br>
+<p>No se ha podido eliminar el género, ya que este se encuentra en uso para los siguientes libros: </p>
+<ul class="lista-libros">
+    {% for libro in libros %}
+    <li><a href="{{ libro.url }}">{{ libro.titulo }}</a> - {{ libro.año }}</li>
+    {% endfor %}
+</ul><br>
+<p>Elimine o modifique todos los libros que dependan del género para continuar.</p>
+<a href="../"><button class="btn btn-def">Volver</button></a>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+</script>

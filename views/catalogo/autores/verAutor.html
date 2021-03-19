@@ -1,0 +1,24 @@
+<h1 class="titulo">Detalles del autor</h1>
+<div class="div-center">
+    <a href="{{ autor.url }}/editarAutor"><button class="btn btn-half btn-inf">Editar información</button></a>
+    <a href="{{ autor.url }}/borrarAutor"><button class="btn btn-half btn-err">Eliminar autor</button></a>
+</div>
+<ul>
+    <li><b>Nombre:</b> {{ autor.nombre }}</li>
+    <li><b>Libros ({{ libros | length }}):</b></li>
+</ul>
+<ul class="lista-libros">
+    {% for libro in libros %}
+    <li><a href="{{ libro.url }}">{{ libro.titulo }}</a> - {{ libro.año }}</li>
+    {% else %}
+    <li>Este autor no tiene ningun libro registrado a su nombre.</li>
+    {% endfor %}
+</ul>
+<a href="../autores"><button class="btn btn-def">Volver</button></a>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+</script>

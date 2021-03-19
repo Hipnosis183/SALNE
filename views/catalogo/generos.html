@@ -1,0 +1,17 @@
+<h1 class="titulo">Gestión de géneros</h1>
+<a href="generos/nuevoGenero"><button class="btn btn-full btn-ok">Registrar nuevo género</button></a>
+<ul class="lista-catalogos">
+    {% for genero in generos %}
+    <li>
+        <h2><a href="{{ genero.url }}">{{ genero.nombre }}</a></h2>
+    </li>
+    {% else %}
+    {% endfor %}
+</ul>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+</script>

@@ -1,0 +1,18 @@
+<h1 class="titulo">Gestión de libros</h1>
+<a href="libros/nuevoLibro"><button class="btn btn-full btn-ok">Registrar nuevo libro</button></a>
+<ul class="lista-catalogos">
+    {% for libro in libros %}
+    <li>
+        <h2><a href="{{ libro.url }}">{{ libro.titulo }}</a></h2>
+        <p><b><a href="{{ libro.autor.url }}">{{ libro.autor.nombre }}</a></b> - {{ libro.edicion }} - {{ libro.año }} - <a href="{{ libro.genero[0].url }}">{{ libro.genero[0].nombre }}</a></p>
+    </li>
+    {% else %}
+    {% endfor %}
+</ul>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+</script>

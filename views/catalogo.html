@@ -1,0 +1,18 @@
+<h1 class="titulo">Bienvenido al Sistema de Administración para Librerías Nacionales Estandarizado</h1>
+<p>
+    Para empezar, seleccione una de las categorías en el panel lateral izquierdo para administrar y visualizar los
+    elementos de cada una.
+</p><br>
+<h2 class="subtitulo">Información registrada en la librería:</h2>
+<ul class="informacion">
+    <li><b>Autores:</b> {{ informacion.autores }}</li>
+    <li><b>Géneros:</b> {{ informacion.generos }}</li>
+    <li><b>Libros:</b> {{ informacion.libros }}</li>
+</ul>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/catalogo.css' }}''>");
+    });
+</script>

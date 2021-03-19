@@ -1,0 +1,20 @@
+<h1 class="titulo">Registrar nuevo autor</h1>
+<form action="nuevoAutor" class="formulario" method="POST">
+    <label>Nombre: </label>
+    {% for error in errors %}
+    {% if error.param == "nombre" %}
+    <input class="campo-invalido" name="nombre" required="true" type="text" maxlength="50" placeholder="Información ingresada inválida."><br><br>
+    {% endif %}
+    {% else %}
+    <input class="campo-valido" name="nombre" required="true" type="text" maxlength="50"><br><br>
+    {% endfor %}
+    <button type="submit" class="btn btn-form btn-ok">Añadir</button>
+</form>
+<a href="/catalogo/autores"><button class="btn btn-form btn-err">Cancelar</button></a>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+</script>

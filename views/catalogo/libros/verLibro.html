@@ -1,0 +1,22 @@
+<h1 class="titulo">Detalles del libro</h1>
+<div class="div-center">
+    <a href="{{ libro.url }}/editarLibro"><button class="btn btn-half btn-inf">Editar información</button></a>
+    <a href="{{ libro.url }}/borrarLibro"><button class="btn btn-half btn-err">Eliminar libro</button></a>
+</div>
+<ul>
+    <li><b>Título:</b> {{ libro.titulo }}</li>
+    <li><b>Descripción:</b> {{ libro.descrip }}</li>
+    <li><b>Autor:</b> <a href="{{ libro.autor.url }}">{{ libro.autor.nombre }}</a></li>
+    <li><b>Edición:</b> {{ libro.edicion }}</li>
+    <li><b>Año:</b> {{ libro.año }}</li>
+    <li><b>Género:</b> <a href="{{ libro.genero[0].url }}">{{ libro.genero[0].nombre }}</a></li>
+    <li><b>ISBN:</b> {{ libro.isbn }}</li>
+</ul>
+<a href="../libros"><button class="btn btn-def">Volver</button></a>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+</script>

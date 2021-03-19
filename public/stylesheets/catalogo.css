@@ -1,0 +1,12 @@
+.informacion {
+    list-style-type: inherit;
+    padding-left: 20px;
+}
+
+.subtitulo {
+    margin-bottom: 30px;
+}
+
+.titulo {
+    margin-bottom: 40px;
+}

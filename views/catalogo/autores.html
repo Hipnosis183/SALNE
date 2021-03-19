@@ -1,0 +1,17 @@
+<h1 class="titulo">Gestión de autores</h1>
+<a href="autores/nuevoAutor"><button class="btn btn-full btn-ok">Registrar nuevo autor</button></a>
+<ul class="lista-catalogos">
+    {% for autor in autores %}
+    <li>
+        <h2><a href="{{ autor.url }}">{{ autor.nombre }}</a></h2>
+    </li>
+    {% else %}
+    {% endfor %}
+</ul>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+</script>

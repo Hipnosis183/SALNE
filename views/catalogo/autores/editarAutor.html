@@ -1,0 +1,20 @@
+<h1 class="titulo">Editar información del autor</h1>
+<form action="editarAutor" class="formulario" method="POST">
+    <label>Nombre: </label>
+    {% for error in errors %}
+    {% if error.param == "nombre" %}
+    <input class="campo-invalido" name="nombre" required="true" type="text" maxlength="50" value="{{ autor.nombre }}"><br><br>
+    {% endif %}
+    {% else %}
+    <input class="campo-valido" name="nombre" required="true" type="text" maxlength="50" value="{{ autor.nombre }}"><br><br>
+    {% endfor %}
+    <button type="submit" class="btn btn-form btn-ok">Actualizar</button>
+</form>
+<a href="{{ autor.url }}"><button class="btn btn-form btn-err">Cancelar</button></a>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+</script>

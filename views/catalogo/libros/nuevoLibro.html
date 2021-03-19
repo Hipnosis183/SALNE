@@ -1,0 +1,64 @@
+<h1 class="titulo">Registrar nuevo libro</h1>
+<form action="nuevoLibro" class="formulario" method="POST">
+    <label>Título: </label>
+    {% for error in errors %}
+    {% if error.param == "titulo" %}
+    <input class="campo-invalido" name="titulo" required="true" type="text" maxlength="100" placeholder="Información ingresada inválida."><br><br>
+    {% endif %}
+    {% else %}
+    <input class="campo-valido" name="titulo" required="true" type="text" maxlength="100"><br><br>
+    {% endfor %}
+    <label>Descripción: </label>
+    {% for error in errors %}
+    {% if error.param == "descrip" %}
+    <input class="campo-invalido" name="descrip" required="true" type="text" maxlength="300" placeholder="Información ingresada inválida."><br><br>
+    {% endif %}
+    {% else %}
+    <input class="campo-valido" name="descrip" required="true" type="text" maxlength="300"><br><br>
+    {% endfor %}
+    <label>Autor: </label>
+    <select class="campo-valido" name="autor" required="true">
+        {% for autor in autores %}
+        <option value="{{ autor._id }}">{{ autor.nombre }}</option>
+        {% endfor %}
+    </select><br><br>
+    <label>Edición: </label>
+    {% for error in errors %}
+    {% if error.param == "edicion" %}
+    <input class="campo-invalido" name="edicion" required="true" type="text" maxlength="20" placeholder="Información ingresada inválida."><br><br>
+    {% endif %}
+    {% else %}
+    <input class="campo-valido" name="edicion" required="true" type="text" maxlength="20"><br><br>
+    {% endfor %}
+    <label>Año: </label>
+    {% for error in errors %}
+    {% if error.param == "año" %}
+    <input class="campo-invalido" name="año" required="true" type="number" min="1000" max="9999" placeholder="Información ingresada inválida."><br><br>
+    {% endif %}
+    {% else %}
+    <input class="campo-valido" name="año" required="true" type="number" min="1000" max="9999"><br><br>
+    {% endfor %}
+    <label>Género: </label>
+    <select class="campo-valido" name="genero" required="true">
+        {% for genero in generos %}
+        <option value="{{ genero._id }}">{{ genero.nombre }}</option>
+        {% endfor %}
+    </select><br><br>
+    <label>ISBN: </label>
+    {% for error in errors %}
+    {% if error.param == "isbn" %}
+    <input class="campo-invalido" name="isbn" required="true" type="number" min="1000000000" max="9999999999999" placeholder="Información ingresada inválida."><br><br>
+    {% endif %}
+    {% else %}
+    <input class="campo-valido" name="isbn" required="true" type="number" min="1000000000" max="9999999999999"><br><br>
+    {% endfor %}
+    <button type="submit" class="btn btn-form btn-ok">Añadir</button>
+</form>
+<a href="/catalogo/libros"><button class="btn btn-form btn-err">Cancelar</button></a>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+</script>

@@ -1,0 +1,40 @@
+body {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 16px;
+    margin: unset;
+}
+
+.btn-index {
+    border-style: solid;
+    cursor: pointer;
+    font: inherit;
+    outline: none;
+    padding: 20px;
+}
+
+.header {
+    margin-bottom: 60px;
+}
+
+.index {
+    left: 50%;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sidebar{
+    display: none;
+}
+
+.sub-titulo {
+    font-size: 22px;
+    white-space: nowrap;
+}
+
+.titulo {
+    color: #2e6ee0;
+    font-size: 120px;
+    margin: 0px;
+}

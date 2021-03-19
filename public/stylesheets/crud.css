@@ -1,0 +1,93 @@
+/* Botones */
+.btn {
+    border-style: solid;
+    border-width: 2px;
+    cursor: pointer;
+    font: inherit;
+    margin: 20px;
+    outline: none;
+    padding: 20px;
+    width: 120px;
+}
+
+/* Botones - Variaciones */
+.btn-form {
+    float: right;
+}
+
+.btn-full {
+    width: 80%;
+}
+
+.btn-half {
+    width: 44%;
+}
+
+/* Botones - Colores */
+.btn-def {
+    border-color: #767676;
+}
+
+.btn-err {
+    background-color: #ff5555;
+    border-color: #803232;
+}
+
+.btn-inf {
+    background-color: #5590ff;
+    border-color: #325680;
+}
+
+.btn-ok {
+    background-color: #77ff82;
+    border-color: #328038;
+}
+
+/* Formularios */
+.formulario {
+    margin-top: 40px;
+}
+
+.formulario input,
+.formulario select {
+    border: solid;
+    border-width: 2px;
+    font: inherit;
+    padding: 10px;
+}
+
+.formulario input {
+    height: 20px;
+    width: 79%;
+}
+
+.formulario label {
+    display: inline-block;
+    width: 120px;
+}
+
+.formulario select {
+    width: 82%;
+}
+
+.campo-invalido,
+.campo-invalido::placeholder {
+    background-color: #ff8686;
+    border-color: #803232;
+    color: #803232;
+}
+
+.campo-valido {
+    background-color: #f0f8ff;
+    border-color: #a0a0a0;
+}
+
+/* Listas */
+.lista-libros {
+    list-style-type: inherit;
+    padding: 0px 40px;
+}
+
+.lista-catalogos li {
+    display: table;
+}
