@@ -1,10 +1,25 @@
-<h1 class="titulo">Gestión de libros</h1>
-<a href="libros/nuevoLibro"><button class="btn btn-full btn-ok">Registrar nuevo libro</button></a>
+<div class="div-info-l">
+    <h1 class="titulo">Gestión de libros</h1>
+    {% if session.usuarioId %}
+    <a href="libros/nuevoLibro"><button class="btn btn-top btn-ok">Registrar nuevo libro</button></a>
+    {% endif %}
+</div>
 <ul class="lista-catalogos">
     {% for libro in libros %}
     <li>
-        <h2><a href="{{ libro.url }}">{{ libro.titulo }}</a></h2>
-        <p><b><a href="{{ libro.autor.url }}">{{ libro.autor.nombre }}</a></b> - {{ libro.edicion }} - {{ libro.año }} - <a href="{{ libro.genero[0].url }}">{{ libro.genero[0].nombre }}</a></p>
+        <div class="img-cont-m">
+            {% if libro.formato %}
+            <img src="/images/{{ libro.imagen }}" class="img-available">
+            {% else %}
+            <div class="img-unavailable-out">
+                <p class="img-unavailable-in">Imagen no disponible</p>
+            </div>
+            {% endif %}
+        </div>
+        <div>
+            <h2><a href="{{ libro.url }}">{{ libro.titulo }}</a></h2>
+            <p><b><a href="{{ libro.autor.url }}">{{ libro.autor.nombre }}</a></b> - {{ libro.edicion }} - {{ libro.año }} - <a href="{{ libro.genero[0].url }}">{{ libro.genero[0].nombre }}</a></p>
+        </div>
     </li>
     {% else %}
     {% endfor %}

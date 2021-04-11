@@ -1,20 +1,22 @@
 <h1 class="titulo">Detalles del género</h1>
-<div class="div-center">
-    <a href="{{ genero.url }}/editarGenero"><button class="btn btn-half btn-inf">Editar información</button></a>
-    <a href="{{ genero.url }}/borrarGenero"><button class="btn btn-half btn-err">Eliminar género</button></a>
+<div class="div-info">
+    <ul>
+        <li><b>Nombre:</b> {{ genero.nombre }}</li>
+        <li><b>Libros ({{ libros | length }}):</b></li>
+    </ul>
+    <ul class="lista-libros">
+        {% for libro in libros %}
+        <li><a href="{{ libro.url }}">{{ libro.titulo }}</a> - {{ libro.año }}</li>
+        {% else %}
+        <li>Este género no tiene ningun libro registrado a su tipo.</li>
+        {% endfor %}
+    </ul>
 </div>
-<ul>
-    <li><b>Nombre:</b> {{ genero.nombre }}</li>
-    <li><b>Libros ({{ libros | length }}):</b></li>
-</ul>
-<ul class="lista-libros">
-    {% for libro in libros %}
-    <li><a href="{{ libro.url }}">{{ libro.titulo }}</a> - {{ libro.año }}</li>
-    {% else %}
-    <li>Este género no tiene ningun libro registrado a su tipo.</li>
-    {% endfor %}
-</ul>
 <a href="../generos"><button class="btn btn-def">Volver</button></a>
+{% if session.usuarioId %}
+<a href="{{ genero.url }}/borrarGenero"><button class="btn btn-bottom btn-err">Eliminar género</button></a>
+<a href="{{ genero.url }}/editarGenero"><button class="btn btn-bottom btn-inf">Editar información</button></a>
+{% endif %}
 
 <script>
     $(function () {

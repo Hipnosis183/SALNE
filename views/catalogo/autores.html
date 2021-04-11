@@ -1,5 +1,9 @@
-<h1 class="titulo">Gestión de autores</h1>
-<a href="autores/nuevoAutor"><button class="btn btn-full btn-ok">Registrar nuevo autor</button></a>
+<div class="div-info-l">
+    <h1 class="titulo">Gestión de autores</h1>
+    {% if session.usuarioId %}
+    <a href="autores/nuevoAutor"><button class="btn btn-top btn-ok">Registrar nuevo autor</button></a>
+    {% endif %}
+</div>
 <ul class="lista-catalogos">
     {% for autor in autores %}
     <li>

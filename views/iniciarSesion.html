@@ -1,0 +1,19 @@
+<h1 class="titulo">Iniciar sesión</h1>
+<form action="/iniciarSesion" class="formulario" method="POST">
+    <label>Usuario: </label>
+    <input class="campo-valido" name="usuario" required="true" type="text" maxlength="50"><br><br>
+    <label>Contraseña: </label>
+    <input class="campo-valido" name="password" required="true" type="password" maxlength="100"><br><br>
+    {% if invalid %}
+    <p class="mensaje-error">El usuario no existe.</p>
+    {% endif %}
+    <button type="submit" class="btn btn-form btn-ok">Ingresar</button>
+</form>
+<a href="/catalogo"><button class="btn btn-form btn-err">Cancelar</button></a>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+</script>

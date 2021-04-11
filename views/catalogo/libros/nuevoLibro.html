@@ -1,5 +1,5 @@
 <h1 class="titulo">Registrar nuevo libro</h1>
-<form action="nuevoLibro" class="formulario" method="POST">
+<form action="nuevoLibro" class="formulario" method="POST" encType="multipart/form-data">
     <label>Título: </label>
     {% for error in errors %}
     {% if error.param == "titulo" %}
@@ -51,6 +51,14 @@
     {% endif %}
     {% else %}
     <input class="campo-valido" name="isbn" required="true" type="number" min="1000000000" max="9999999999999"><br><br>
+    {% endfor %}
+    <label>Imagen: </label>
+    {% for error in errors %}
+    {% if error.param == "imagen" %}
+    <input class="campo-invalido" name="imagen" type="file" maxlength="300" placeholder="Información ingresada inválida."><br><br>
+    {% endif %}
+    {% else %}
+    <input class="campo-valido" name="imagen" type="file" maxlength="300"><br><br>
     {% endfor %}
     <button type="submit" class="btn btn-form btn-ok">Añadir</button>
 </form>

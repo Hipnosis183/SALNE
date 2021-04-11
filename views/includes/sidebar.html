@@ -17,6 +17,21 @@
         </li>
     </ul><br><br>
     <ul class="sidebar-list">
+        {% if session.usuarioId %}
+        <li>
+            <a href="/"><button class="btn-sidebar">Cuenta</button></a>
+        </li>
+        <li>
+            <a href="/cerrarSesion"><button class="btn-sidebar">Cerrar Sesión</button></a>
+        </li>
+        {% else %}
+        <li>
+            <a href="/iniciarSesion"><button class="btn-sidebar">Iniciar Sesión</button></a>
+        </li>
+        <li>
+            <a href="/usuarios/nuevoUsuario"><button class="btn-sidebar">Registrarse</button></a>
+        </li>
+        {% endif %}
         <li>
             <a href="/"><button class="btn-sidebar">Salir</button></a>
         </li>

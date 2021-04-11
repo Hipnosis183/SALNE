@@ -10,22 +10,41 @@
     width: 120px;
 }
 
+.div-info {
+    display: flow-root;
+    margin: 20px 0px;
+}
+
+.div-info-l {
+    display: inline-flex;
+    width: -webkit-fill-available;
+}
+
+.div-info ul,
+.div-info-l ul {
+    margin: 20px 20px 20px 0px;
+}
+
 /* Botones - Variaciones */
+.btn-bottom {
+    float: right;
+    width: fit-content;
+}
+
 .btn-form {
     float: right;
 }
 
-.btn-full {
-    width: 80%;
-}
-
-.btn-half {
-    width: 44%;
+.btn-top {
+    margin-left: 50px;
+    margin-top: 10px;
+    width: fit-content;
 }
 
 /* Botones - Colores */
 .btn-def {
     border-color: #767676;
+    margin-left: 0px;
 }
 
 .btn-err {
@@ -82,6 +101,12 @@
     border-color: #a0a0a0;
 }
 
+.mensaje-error {
+    color: #ff0000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 /* Listas */
 .lista-libros {
     list-style-type: inherit;
@@ -89,5 +114,45 @@
 }
 
 .lista-catalogos li {
-    display: table;
+    display: inline-flex;
+    height: 120px;
+}
+
+/* Imágenes */
+.img-available {
+    border: solid #2e6ee0 2px;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+    max-width: -webkit-fill-available;
+}
+
+.img-cont {
+    display: flex;
+    float: right;
+    height: 400px;
+    margin: 20px 20px 20px auto;
+    max-width: 300px;
+    min-width: 300px;
+}
+
+.img-cont-m {
+    display: flex;
+    margin-right: 20px;
+    max-width: 100px;
+    min-width: 100px;
+}
+
+.img-unavailable-in {
+    margin: 0px;
+    position: relative;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.img-unavailable-out {
+    background-color: #efefef;
+    border: solid #767676 2px;
+    width: -webkit-fill-available;
 }

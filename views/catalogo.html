@@ -1,13 +1,30 @@
 <h1 class="titulo">Bienvenido al Sistema de Administración para Librerías Nacionales Estandarizado</h1>
 <p>
-    Para empezar, seleccione una de las categorías en el panel lateral izquierdo para administrar y visualizar los
-    elementos de cada una.
+    Para comenzar seleccione una de las categorías en el panel lateral izquierdo.
 </p><br>
-<h2 class="subtitulo">Información registrada en la librería:</h2>
-<ul class="informacion">
-    <li><b>Autores:</b> {{ informacion.autores }}</li>
-    <li><b>Géneros:</b> {{ informacion.generos }}</li>
-    <li><b>Libros:</b> {{ informacion.libros }}</li>
+
+<h2 class="subtitulo">Últimos libros añadidos al catálogo:</h2>
+<ul class="lista-catalogos">
+    {% for libro in libros %}
+    <li>
+        <a href="{{ libro.url }}">
+            <div class="img-cont-m">
+                {% if libro.formato %}
+                <img src="/images/{{ libro.imagen }}" class="img-available">
+                {% else %}
+                <div class="img-unavailable-out">
+                    <h2 class="img-unavailable-in">Imagen no disponible</h2>
+                </div>
+                {% endif %}
+            </div>
+        </a>
+        <div>
+            <h3><a href="{{ libro.url }}">{{ libro.titulo }}</a></h3>
+            <p><a href="{{ libro.autor.url }}">{{ libro.autor.nombre }}</a></p>
+        </div>
+    </li>
+    {% else %}
+    {% endfor %}
 </ul>
 
 <script>

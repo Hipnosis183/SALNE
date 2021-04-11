@@ -1,5 +1,9 @@
-<h1 class="titulo">Gestión de géneros</h1>
-<a href="generos/nuevoGenero"><button class="btn btn-full btn-ok">Registrar nuevo género</button></a>
+<div class="div-info-l">
+    <h1 class="titulo">Gestión de géneros</h1>
+    {% if session.usuarioId %}
+    <a href="generos/nuevoGenero"><button class="btn btn-top btn-ok">Registrar nuevo género</button></a>
+    {% endif %}
+</div>
 <ul class="lista-catalogos">
     {% for genero in generos %}
     <li>
