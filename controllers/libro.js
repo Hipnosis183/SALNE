@@ -74,8 +74,9 @@ module.exports.nuevoLibroPost = [
             if (req.files) {
                 switch (Libro.formato) {
                     case 'png': case 'jpg': {
-                        var imagenPath = process.cwd() + '/public/images/' + Libro.imagen;
-                        req.files.imagen.mv(imagenPath, function (err) {
+                        var imagenPath = process.cwd() + '/public/images/';
+                        if (!fs.existsSync(imagenPath)) fs.mkdirSync(imagenPath);
+                        req.files.imagen.mv(imagenPath + Libro.imagen, function (err) {
                             if (err) return handleError(err);
                         });
                     }
@@ -149,8 +150,9 @@ module.exports.editarLibroPost = [
             if (req.files) {
                 switch (Libro.formato) {
                     case 'png': case 'jpg': {
-                        var imagenPath = process.cwd() + '/public/images/' + Libro.imagen;
-                        req.files.imagen.mv(imagenPath, function (err) {
+                        var imagenPath = process.cwd() + '/public/images/';
+                        if (!fs.existsSync(imagenPath)) fs.mkdirSync(imagenPath);
+                        req.files.imagen.mv(imagenPath + Libro.imagen, function (err) {
                             if (err) return handleError(err);
                         });
                     }
