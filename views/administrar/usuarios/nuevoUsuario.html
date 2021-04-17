@@ -1,0 +1,40 @@
+<h1 class="titulo">Crear cuenta nueva</h1>
+<form action="nuevoUsuario" class="formulario" method="POST">
+    <label>Usuario: </label>
+    {% for error in errors %}
+    {% if error.param == "nombre" %}
+    <input class="campo-invalido" name="nombre" required="true" type="text" maxlength="50" placeholder="Información ingresada inválida."><br><br>
+    {% endif %}
+    {% else %}
+    <input class="campo-valido" name="nombre" required="true" type="text" maxlength="50"><br><br>
+    {% endfor %}
+    <label>Contraseña: </label>
+    {% for error in errors %}
+    {% if error.param == "password" %}
+    <input class="campo-invalido" name="password" required="true" type="password" maxlength="100" placeholder="Información ingresada inválida."><br><br>
+    {% endif %}
+    {% else %}
+    <input class="campo-valido" name="password" required="true" type="password" maxlength="100"><br><br>
+    {% endfor %}
+    <label>Email: </label>
+    {% for error in errors %}
+    {% if error.param == "email" %}
+    <input class="campo-invalido" name="email" required="true" type="email" maxlength="100" placeholder="Información ingresada inválida."><br><br>
+    {% endif %}
+    {% else %}
+    <input class="campo-valido" name="email" required="true" type="email" maxlength="100"><br><br>
+    {% endfor %}
+    {% if UsuarioActual.admin %}
+    <label>Administrador: </label>
+    <input class="" name="admin" type="checkbox" checked="true"><br><br>
+    {% endif %}
+    <button type="submit" class="btn btn-form btn-ok">Añadir</button>
+</form>
+<a href="/catalogo"><button class="btn btn-form btn-err">Cancelar</button></a>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+</script>

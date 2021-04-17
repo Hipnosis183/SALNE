@@ -1,0 +1,14 @@
+<h1 class="titulo">Eliminar cuenta</h1><br>
+<p>¿Está seguro que desea elimiar su cuenta? El proceso es permanente y no se puede deshacer.</p>
+<p>Todos los artículos que haya adquirido se eliminarán junto a su cuenta.</p>
+<form action="borrarUsuario" class="formulario" method="POST">
+    <button type="submit" class="btn btn-form btn-ok">Aceptar</button>
+</form>
+<a href="../"><button class="btn btn-form btn-err">Cancelar</button></a>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+</script>

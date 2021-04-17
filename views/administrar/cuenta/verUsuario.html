@@ -1,0 +1,20 @@
+<h1 class="titulo">Detalles del usuario</h1>
+<div class="div-info-l">
+    <ul>
+        <li><b>Nombre:</b> {{ usuario.nombre }}</li>
+    </ul>
+</div>
+<div>
+    <a href="../usuarios"><button class="btn btn-def">Volver</button></a>
+    {% if UsuarioActual.admin or SesionActual.id_usuario == usuario._id %}
+    <a href="{{ usuario.url }}/borrarUsuario"><button class="btn btn-bottom btn-err">Eliminar usuario</button></a>
+    <a href="{{ usuario.url }}/editarUsuario"><button class="btn btn-bottom btn-inf">Editar información</button></a>
+    {% endif %}
+</div>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+</script>

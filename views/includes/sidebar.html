@@ -15,12 +15,22 @@
         <li>
             <a href="/catalogo/libros"><button class="btn-sidebar">Libros</button></a>
         </li>
+        {% if UsuarioActual.admin %}
+        <li>
+            <a href="/usuarios"><button class="btn-sidebar">Usuarios</button></a>
+        </li>
+        {% endif %}
     </ul><br><br>
     <ul class="sidebar-list">
-        {% if session.usuarioId %}
+        {% if SesionActual.id_usuario %}
         <li>
-            <a href="/"><button class="btn-sidebar">Cuenta</button></a>
+            <a href="/usuarios/{{ SesionActual.id_usuario }}"><button class="btn-sidebar">Cuenta</button></a>
         </li>
+        {% if not UsuarioActual.admin %}
+        <li>
+            <a href="/usuarios/{{ SesionActual.id_usuario }}/carrito"><button class="btn-sidebar">Carrito</button></a>
+        </li>
+        {% endif %}
         <li>
             <a href="/cerrarSesion"><button class="btn-sidebar">Cerrar Sesión</button></a>
         </li>
@@ -32,8 +42,5 @@
             <a href="/usuarios/nuevoUsuario"><button class="btn-sidebar">Registrarse</button></a>
         </li>
         {% endif %}
-        <li>
-            <a href="/"><button class="btn-sidebar">Salir</button></a>
-        </li>
     </ul>
 </div>

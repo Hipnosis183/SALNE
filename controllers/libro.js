@@ -5,6 +5,7 @@ var fs = require('fs');
 var AutorModel = require('../models/autor');
 var GeneroModel = require('../models/genero');
 var LibroModel = require('../models/libro');
+var UsuarioModel = require('../models/usuario');
 
 module.exports.index = function (req, res, next) {
     LibroModel.find()
@@ -74,8 +75,9 @@ module.exports.nuevoLibroPost = [
             if (req.files) {
                 switch (Libro.formato) {
                     case 'png': case 'jpg': {
-                        var imagenPath = process.cwd() + '/public/images/' + Libro.imagen;
-                        req.files.imagen.mv(imagenPath, function (err) {
+                        var imagenPath = process.cwd() + '/public/images/';
+                        if (!fs.existsSync(imagenPath)) fs.mkdirSync(imagenPath);
+                        req.files.imagen.mv(imagenPath + Libro.imagen, function (err) {
                             if (err) return handleError(err);
                         });
                     }
@@ -149,8 +151,9 @@ module.exports.editarLibroPost = [
             if (req.files) {
                 switch (Libro.formato) {
                     case 'png': case 'jpg': {
-                        var imagenPath = process.cwd() + '/public/images/' + Libro.imagen;
-                        req.files.imagen.mv(imagenPath, function (err) {
+                        var imagenPath = process.cwd() + '/public/images/';
+                        if (!fs.existsSync(imagenPath)) fs.mkdirSync(imagenPath);
+                        req.files.imagen.mv(imagenPath + Libro.imagen, function (err) {
                             if (err) return handleError(err);
                         });
                     }
@@ -167,19 +170,33 @@ module.exports.verLibro = function (req, res, next) {
         .populate('genero')
         .exec(function (err, libroInfo) {
             if (err) { return next(err); }
-            res.render('layout', { content: 'catalogo/libros/verLibro', title: ' - ' + libroInfo.titulo, libro: libroInfo });
+            var libroAdquirido = false;
+            for (libroUsuario of res.locals.UsuarioActual.libros) if (libroUsuario == req.params.id) libroAdquirido = true;
+            res.render('layout', { content: 'catalogo/libros/verLibro', title: ' - ' + libroInfo.titulo, libro: libroInfo, libroAdquirido: libroAdquirido });
         });
 }
 
 module.exports.borrarLibro = function (req, res, next) {
-    LibroModel.findByIdAndRemove(req.params.id, function (err, libroInfo) {
-        if (err) return handleError(err);
-        var imageFile = process.cwd() + '/public/images/' + libroInfo.imagen;
-        if (fs.existsSync(imageFile)) {
-            fs.unlink(imageFile, function (err) {
-                if (err) return handleError(err);
-            });
+    async.parallel({
+        libro: function (callback) {
+            LibroModel.findById(req.params.id, callback); },
+        usuarios: function (callback) {
+            UsuarioModel.find({ libros: req.params.id }, callback); },
+    }, function (err, results) {
+        if (err) { return next(err); }
+        if (results.usuarios.length > 0) {
+            res.render('layout', { content: 'catalogo/libros/borrarLibro', title: ' - Borrar Libro', libro: results.libro, usuarios: results.usuarios });
+            return;
         }
-        res.redirect('/catalogo/libros/');
+        LibroModel.findByIdAndRemove(req.params.id, function (err, libroInfo) {
+            if (err) return handleError(err);
+            var imageFile = process.cwd() + '/public/images/' + libroInfo.imagen;
+            if (fs.existsSync(imageFile)) {
+                fs.unlink(imageFile, function (err) {
+                    if (err) return handleError(err);
+                });
+            }
+            res.redirect('/catalogo/libros/');
+        });
     });
 }

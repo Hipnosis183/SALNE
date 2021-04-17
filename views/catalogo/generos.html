@@ -1,7 +1,9 @@
 <div class="div-info-l">
+    {% if UsuarioActual.admin %}
     <h1 class="titulo">Gestión de géneros</h1>
-    {% if session.usuarioId %}
     <a href="generos/nuevoGenero"><button class="btn btn-top btn-ok">Registrar nuevo género</button></a>
+    {% else %}
+    <h1 class="titulo">Géneros</h1>
     {% endif %}
 </div>
 <ul class="lista-catalogos">

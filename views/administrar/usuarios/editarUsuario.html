@@ -1,0 +1,36 @@
+<h1 class="titulo">Editar información de la cuenta</h1>
+<form action="editarUsuario" class="formulario" method="POST">
+    <label>Usuario: </label>
+    {% for error in errors %}
+    {% if error.param == "nombre" %}
+    <input class="campo-invalido" name="nombre" required="true" type="text" maxlength="50" value="{{ usuario.nombre }}"><br><br>
+    {% endif %}
+    {% else %}
+    <input class="campo-valido" name="nombre" required="true" type="text" maxlength="50" value="{{ usuario.nombre }}"><br><br>
+    {% endfor %}
+    <label>Contraseña: </label>
+    {% for error in errors %}
+    {% if error.param == "password" %}
+    <input class="campo-invalido" name="password" required="true" type="password" maxlength="100" value="{{ usuario.password }}"><br><br>
+    {% endif %}
+    {% else %}
+    <input class="campo-valido" name="password" required="true" type="password" maxlength="100" value="{{ usuario.password }}"><br><br>
+    {% endfor %}
+    <label>Email: </label>
+    {% for error in errors %}
+    {% if error.param == "email" %}
+    <input class="campo-invalido" name="email" required="true" type="email" maxlength="100" value="{{ usuario.email }}"><br><br>
+    {% endif %}
+    {% else %}
+    <input class="campo-valido" name="email" required="true" type="email" maxlength="100" value="{{ usuario.email }}"><br><br>
+    {% endfor %}
+    <button type="submit" class="btn btn-form btn-ok">Actualizar</button>
+</form>
+<a href="{{ usuario.url }}"><button class="btn btn-form btn-err">Cancelar</button></a>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+</script>

@@ -55,14 +55,13 @@ module.exports.editarAutorPost = [
             _id: req.params.id
         });
         if (!errors.isEmpty()) {
-            res.render('layout', { content: 'catalogo/autores/nuevoAutor', title: ' - Nuevo Autor', autor: Autor, errors: errors.array() });
+            res.render('layout', { content: 'catalogo/autores/nuevoAutor', title: ' - Editar Autor', autor: Autor, errors: errors.array() });
             return;
         }
         AutorModel.findOne({ 'nombre': req.body.nombre }, function (err, autor) {
             if (err) { return next(err); }
             if (autor) { res.redirect(autor.url);
             } else {
-                console.log(req.params.id);
                 AutorModel.findByIdAndUpdate(req.params.id, Autor, {}, function (err) {
                     if (err) return handleError(err);
                     res.redirect('/catalogo/autores/' + req.params.id);

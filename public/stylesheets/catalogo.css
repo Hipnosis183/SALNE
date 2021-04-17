@@ -22,6 +22,27 @@
     text-align: center;
 }
 
+.lista-usuarios li {
+    margin: 0px;
+    margin-bottom: 30px;
+}
+
+.lista-usuarios p,
+.lista-usuarios h2 {
+    align-self: center;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.item-row {
+    display: flex;
+    margin: 10px auto;
+}
+
+.separador {
+    margin: 0px 10px;
+}
+
 /* Imágenes */
 .img-available {
     border: solid 2px;

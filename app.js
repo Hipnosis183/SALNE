@@ -42,13 +42,21 @@ app.use(session({
     store: MongoStore.create({ mongoUrl: mongoDB })
 }));
 app.use(function (req, res, next) {
-    res.locals.session = req.session;
-    if (res.locals.session.usuarioId) {
-        UsuarioModel.findOne({ '_id': res.locals.session.usuarioId }, function (err, usuario) {
+    res.locals.SesionActual = req.session;
+    if (req.cookies.carrito) res.locals.CarritoActual = req.cookies.carrito;
+    var Usuario = new UsuarioModel({
+        nombre: null,
+        password: null,
+        email: null,
+        admin: null
+    }); res.locals.UsuarioActual = Usuario;
+    if (res.locals.SesionActual.id_usuario) {
+        UsuarioModel.findOne({ '_id': res.locals.SesionActual.id_usuario }, function (err, usuario) {
             if (err) { return next(err); }
-            res.locals.usuario = usuario;
+            res.locals.UsuarioActual = usuario;
+            next();
         });
-    } next();
+    } else { next(); }
 });
 
 app.use('/', IndexRouter);

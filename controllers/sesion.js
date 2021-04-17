@@ -1,7 +1,7 @@
 var UsuarioModel = require('../models/usuario');
 
 module.exports.iniciarSesionGet = function (req, res, next) {
-    if (!req.session.usuarioId) {
+    if (!req.session.id_usuario) {
         res.render('layout', { content: 'iniciarSesion', title: ' - Iniciar Sesión' });
     } else {
         res.redirect('/catalogo');
@@ -9,11 +9,10 @@ module.exports.iniciarSesionGet = function (req, res, next) {
 }
 
 module.exports.iniciarSesionPost = function (req, res, next) {
-    UsuarioModel.findOne({ 'usuario': req.body.usuario, 'password': req.body.password }, function (err, usuario) {
+    UsuarioModel.findOne({ 'nombre': req.body.nombre, 'password': req.body.password }, function (err, usuario) {
         if (err) { return next(err); }
-        console.log(req.session);
         if (usuario) {
-            req.session.usuarioId = usuario._id;
+            req.session.id_usuario = usuario._id;
             res.redirect('/catalogo');
             return;
         } else {
@@ -25,11 +24,12 @@ module.exports.iniciarSesionPost = function (req, res, next) {
 
 module.exports.cerrarSesion = function (req, res, next) {
     req.session.destroy();
+    res.clearCookie('carrito');
     res.redirect('/catalogo');
 }
 
 module.exports.reqAutorizacion = function (req, res, next) {
-    if (res.locals.session.usuarioId) { next(); }
+    if (res.locals.UsuarioActual.admin) { next(); }
     else {
         res.redirect('/iniciarSesion');
         return;
@@ -37,5 +37,5 @@ module.exports.reqAutorizacion = function (req, res, next) {
 };
 
 module.exports.estaAutorizado = function (req, res, next) {
-    return res.locals.session.usuarioId ? true : false;
+    return res.locals.UsuarioActual.admin ? true : false;
 };

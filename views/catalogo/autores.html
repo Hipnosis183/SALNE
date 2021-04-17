@@ -1,7 +1,9 @@
 <div class="div-info-l">
+    {% if UsuarioActual.admin %}
     <h1 class="titulo">Gestión de autores</h1>
-    {% if session.usuarioId %}
     <a href="autores/nuevoAutor"><button class="btn btn-top btn-ok">Registrar nuevo autor</button></a>
+    {% else %}
+    <h1 class="titulo">Autores</h1>
     {% endif %}
 </div>
 <ul class="lista-catalogos">

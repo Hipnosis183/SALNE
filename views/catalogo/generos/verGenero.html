@@ -13,7 +13,7 @@
     </ul>
 </div>
 <a href="../generos"><button class="btn btn-def">Volver</button></a>
-{% if session.usuarioId %}
+{% if UsuarioActual.admin %}
 <a href="{{ genero.url }}/borrarGenero"><button class="btn btn-bottom btn-err">Eliminar género</button></a>
 <a href="{{ genero.url }}/editarGenero"><button class="btn btn-bottom btn-inf">Editar información</button></a>
 {% endif %}

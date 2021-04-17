@@ -1,12 +1,8 @@
 <div class="div-info-l">
-    {% if UsuarioActual.admin %}
-    <h1 class="titulo">Gestión de libros</h1>
-    <a href="libros/nuevoLibro"><button class="btn btn-top btn-ok">Registrar nuevo libro</button></a>
-    {% else %}
-    <h1 class="titulo">Libros</h1>
-    {% endif %}
+    <h1 class="titulo">Carrito</h1>
 </div>
 <ul class="lista-catalogos">
+    {% set carritoVacio = false %}
     {% for libro in libros %}
     <li>
         <div class="img-cont-m">
@@ -24,7 +20,12 @@
         </div>
     </li>
     {% else %}
+    {% set carritoVacio = true %}
+    <p>Aún no se añadió ningún elemento al carrito.</p>
     {% endfor %}
+    {% if not carritoVacio %}
+    <a href="carrito/realizarCompra"><button class="btn btn-bottom btn-ok">Realizar Compra</button></a>
+    {% endif %}
 </ul>
 
 <script>

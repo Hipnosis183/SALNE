@@ -1,0 +1,47 @@
+{% if UsuarioActual.admin %}
+<h1 class="titulo">Detalles del usuario</h1>
+{% else %}
+<h1 class="titulo">Detalles de la cuenta</h1>
+{% endif %}
+<div class="div-info-l">
+    <ul>
+        <li><b>Nombre:</b> {{ usuario.nombre }}</li>
+        <li><b>Email:</b> {{ usuario.email }}</li><br>
+        <li><b>Libros en biblioteca:</b>
+        <ul class="lista-catalogos">
+            {% for libro in usuario.libros %}
+            <li>
+                <div class="img-cont-m">
+                    {% if libro.formato %}
+                    <img src="/images/{{ libro.imagen }}" class="img-available">
+                    {% else %}
+                    <div class="img-unavailable-out">
+                        <p class="img-unavailable-in">Imagen no disponible</p>
+                    </div>
+                    {% endif %}
+                </div>
+                <div>
+                    <h2><a href="{{ libro.url }}">{{ libro.titulo }}</a></h2>
+                    <p><b><a href="{{ libro.autor.url }}">{{ libro.autor.nombre }}</a></b> - {{ libro.edicion }} - {{ libro.año }} - <a href="{{ libro.genero[0].url }}">{{ libro.genero[0].nombre }}</a></p>
+                </div>
+            </li>
+            {% else %}
+            <p>Aún no se ha adquirido ningún libro.</p>
+            {% endfor %}
+        </ul></li>
+    </ul>
+</div>
+<div>
+    <a href="../usuarios"><button class="btn btn-def">Volver</button></a>
+    {% if (UsuarioActual.admin and usuario.admin) or SesionActual.id_usuario == usuario._id %}
+    <a href="{{ usuario.url }}/borrarUsuario"><button class="btn btn-bottom btn-err">Eliminar cuenta</button></a>
+    <a href="{{ usuario.url }}/editarUsuario"><button class="btn btn-bottom btn-inf">Editar información</button></a>
+    {% endif %}
+</div>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+</script>

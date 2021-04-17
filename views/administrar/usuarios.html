@@ -1,0 +1,38 @@
+<div class="div-info-l">
+    <h1 class="titulo">Gestión de usuarios</h1>
+    <a href="usuarios/nuevoUsuario"><button class="btn btn-top btn-ok">Registrar nuevo usuario</button></a>
+</div>
+<p>Gestionar a los usuarios administradores.</p>
+<p>Para los no administradores, sólo los propios usuarios pueden modificar sus datos.</p><br>
+<ul class="lista-usuarios">
+    {% for usuario in usuarios %}
+    {% if usuario.admin %}
+    <li>
+        <div>
+            <div class="item-row">
+                <h2><a href="{{ usuario.url }}">{{ usuario.nombre }}</a></h2>
+                <p class="separador">-</p>
+                <p>{{ usuario.email }}</p>
+            </div>
+            <div class="item-row">
+                <p><b>Tipo de Usuario</b></p>
+                <p class="separador">-</p>
+                <p>Administrador</p>
+            </div>
+        </div>
+    </li>
+    {% endif %}
+    {% else %}
+    {% endfor %}
+</ul>
+
+<script>
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/crud.css' }}''>");
+    });
+    $(function () {
+        $("head link[type='text/css']").last()
+            .after("<link rel='stylesheet' type='text/css' href='{{ '/stylesheets/catalogo.css' }}''>");
+    });
+</script>

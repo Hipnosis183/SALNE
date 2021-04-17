@@ -21,9 +21,27 @@
 </div>
 <div>
     <a href="../libros"><button class="btn btn-def">Volver</button></a>
-    {% if session.usuarioId %}
+    {% if UsuarioActual.admin %}
     <a href="{{ libro.url }}/borrarLibro"><button class="btn btn-bottom btn-err">Eliminar libro</button></a>
     <a href="{{ libro.url }}/editarLibro"><button class="btn btn-bottom btn-inf">Editar información</button></a>
+    {% elif SesionActual.id_usuario %}
+    {% set libroExiste = false %}
+    {% for libroCarrito in CarritoActual %}
+    {% if libroCarrito == libro._id %}
+    {% set libroExiste = true %}
+    {% endif %}
+    {% else %}
+    {% endfor %}
+    {% if libroExiste %}
+    <button class="btn btn-bottom btn-inf" style="cursor: default;">En el Carrito</button>
+    <a href="{{ libro.url }}/quitarLibro"><button class="btn btn-bottom btn-err">Eliminar del Carrito</button></a>
+    {% else %}
+    {% if libroAdquirido %}
+    <button class="btn btn-bottom btn-inf" style="cursor: default;">En la Biblioteca</button>
+    {% else %}
+    <a href="{{ libro.url }}/anadirLibro"><button class="btn btn-bottom btn-ok">Agregar al Carrito</button></a>
+    {% endif %}
+    {% endif %}
     {% endif %}
 </div>
 
