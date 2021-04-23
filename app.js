@@ -19,8 +19,7 @@ var app = express();
 nunjucks(app, {});
 
 var mongoose = require('mongoose');
-// var mongoDB = 'mongodb://127.0.0.1/libreria';
-var mongoDB = 'mongodb+srv://user:user@cluster.a2fao.mongodb.net/libreria?retryWrites=true&w=majority';
+var mongoDB = 'mongodb://127.0.0.1/libreria';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
