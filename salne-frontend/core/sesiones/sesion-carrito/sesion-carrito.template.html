@@ -1,0 +1,44 @@
+<div layout-padding>
+    <div class="page-header">
+        <h1 class="page-title">Carro de compras</h1>
+        <span flex></span>
+        <span class="material-icons">&#xe8b6</span>
+        <md-input-container class="search-input">
+            <input ng-model="search" placeholder="Buscar...">
+        </md-input-container>
+        <md-button class="md-raised md-primary" ng-click="$root.goBack()">&lt; Volver</md-button>
+        <md-button class="md-raised md-primary" ng-click="realizarCompra()"
+            ng-if="$root.usuarioSesion && !carritoVacio">Realizar compra</md-button>
+    </div>
+    <ul class="lista-catalogos">
+        <md-card>
+            <div class="center-align">
+                <div ng-if="!libros.length > 0">
+                    <br><p>Aún no se ha añadido ningún elemento al carro de compras.</p><br>
+                </div>
+            </div>
+        </md-card>
+        <li ng-repeat="libro in libros | filter: { titulo: search }">
+            <md-content>
+                <md-card class="card-small">
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">
+                                <a href="#!/libros/{{ libro._id }}">{{ libro.titulo }}</a></span>
+                            <span class="md-subhead">
+                                <a href="#!/autores/{{ libro.autor._id }}">{{ libro.autor.nombre }}</a>
+                                 - {{ libro.edicion }} - {{ libro.ano }} - 
+                                <a href="#!/generos/{{ libro.genero._id }}">{{ libro.genero.nombre }}</a>
+                            </span><br>
+                            <span class="md-subhead">{{ libro.descrip }}</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                            <img class="md-media-lg img-cover"
+                                ng-src="{{ getImage(libro) }}">
+                        </md-card-title-media>
+                    </md-card-title>
+                </md-card>
+            </md-content>
+        </li>
+    </ul>
+</div>

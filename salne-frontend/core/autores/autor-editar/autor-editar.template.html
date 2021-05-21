@@ -1,0 +1,37 @@
+<div layout-padding>
+    <div class="page-header">
+        <h1 class="page-title">Editar información del autor</h1>
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="$root.goBack()">&lt; Cancelar</md-button>
+        <md-button class="md-raised md-primary" ng-click="autorEditar()">Actualizar</md-button>
+    </div>
+    <md-content>
+        <md-card class="card-large">
+            <md-card-title>
+                <md-card-title-text>
+                    <form name="autorForm" encType="multipart/form-data">
+                        <md-input-container class="md-block">
+                            <input type="text" name="nombre" ng-model="autor.nombre" placeholder="Nombre"
+                                md-no-asterisk required maxlength="50">
+                            <div ng-messages="autorForm.nombre.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                            </div>
+                        </md-input-container>
+                        <div class="page-header">
+                            <p class="input-text">Imágen de autor</p>
+                            <input id="imagen" hidden="true" type="file" accept="image/png, image/jpeg"
+                                fileinput="file" filepreview="filepreview">
+                            <md-button class="md-raised md-primary">
+                                <label class="input-button" for="imagen">Seleccionar...</label>
+                            </md-button>
+                        </div>
+                    </form>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <img class="img-cover img-square-medium" ng-if="filepreview" ng-src="{{ filepreview }}">
+                    <img class="img-cover img-square-medium" ng-if="!filepreview" ng-src="{{ getImage() }}">
+                </md-card-title-media>
+            </md-card-title>
+        </md-card>
+    </md-content>
+</div>

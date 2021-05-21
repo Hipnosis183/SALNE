@@ -1,0 +1,1 @@
+angular.module('modUsuarios', ['usuarioVer', 'usuarioNuevo', 'usuarioEditar']);

@@ -1,0 +1,1 @@
+angular.module('modLibros', ['libroLista', 'libroVer', 'libroNuevo', 'libroEditar']);

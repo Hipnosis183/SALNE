@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="salneApp">
+
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SALNE</title>
+
+    <!-- Stylesheets -->
+    <!-- Stylesheets - Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap">
+    <!-- Stylesheets - Material -->
+    <link rel="stylesheet" href="./node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Stylesheets - User -->
+    <link rel="stylesheet" href="./index.css">
+
+    <!-- Scripts - AngularJS -->
+    <script src="./node_modules/angular/angular.js"></script>
+    <script src="./node_modules/angular-route/angular-route.js"></script>
+    <script src="./node_modules/angular-resource/angular-resource.js"></script>
+    <script src="./node_modules/angular-animate/angular-animate.js"></script>
+    <script src="./node_modules/angular-aria/angular-aria.js"></script>
+    <script src="./node_modules/angular-messages/angular-messages.js"></script>
+    <script src="./node_modules/angular-material/angular-material.js"></script>
+    <script src="./node_modules/angular-cookies/angular-cookies.js"></script>
+    <!-- Scripts - AngularJS Init & Configuration-->
+    <script src="./app.module.js"></script>
+    <script src="./app.config.js"></script>
+    <script src="./app.directives.js"></script>
+
+    <!-- Scripts - User -->
+    <!-- Scripts - Inicio -->
+    <script src="./core/inicio/inicio.module.js"></script>
+    <script src="./core/inicio/inicio/inicio.module.js"></script>
+    <script src="./core/inicio/inicio/inicio.component.js"></script>
+    <!-- Scripts - Libros -->
+    <script src="./core/libros/libros.module.js"></script>
+    <script src="./core/libros/libro-lista/libro-lista.module.js"></script>
+    <script src="./core/libros/libro-lista/libro-lista.component.js"></script>
+    <script src="./core/libros/libro-ver/libro-ver.module.js"></script>
+    <script src="./core/libros/libro-ver/libro-ver.component.js"></script>
+    <script src="./core/libros/libro-nuevo/libro-nuevo.module.js"></script>
+    <script src="./core/libros/libro-nuevo/libro-nuevo.component.js"></script>
+    <script src="./core/libros/libro-editar/libro-editar.module.js"></script>
+    <script src="./core/libros/libro-editar/libro-editar.component.js"></script>
+    <!-- Scripts - Autores -->
+    <script src="./core/autores/autores.module.js"></script>
+    <script src="./core/autores/autor-lista/autor-lista.module.js"></script>
+    <script src="./core/autores/autor-lista/autor-lista.component.js"></script>
+    <script src="./core/autores/autor-ver/autor-ver.module.js"></script>
+    <script src="./core/autores/autor-ver/autor-ver.component.js"></script>
+    <script src="./core/autores/autor-nuevo/autor-nuevo.module.js"></script>
+    <script src="./core/autores/autor-nuevo/autor-nuevo.component.js"></script>
+    <script src="./core/autores/autor-editar/autor-editar.module.js"></script>
+    <script src="./core/autores/autor-editar/autor-editar.component.js"></script>
+    <!-- Scripts - Géneros -->
+    <script src="./core/generos/generos.module.js"></script>
+    <script src="./core/generos/genero-lista/genero-lista.module.js"></script>
+    <script src="./core/generos/genero-lista/genero-lista.component.js"></script>
+    <script src="./core/generos/genero-ver/genero-ver.module.js"></script>
+    <script src="./core/generos/genero-ver/genero-ver.component.js"></script>
+    <script src="./core/generos/genero-nuevo/genero-nuevo.module.js"></script>
+    <script src="./core/generos/genero-nuevo/genero-nuevo.component.js"></script>
+    <script src="./core/generos/genero-editar/genero-editar.module.js"></script>
+    <script src="./core/generos/genero-editar/genero-editar.component.js"></script>
+    <!-- Scripts - Usuarios -->
+    <script src="./core/usuarios/usuarios.module.js"></script>
+    <script src="./core/usuarios/usuario-ver/usuario-ver.module.js"></script>
+    <script src="./core/usuarios/usuario-ver/usuario-ver.component.js"></script>
+    <script src="./core/usuarios/usuario-nuevo/usuario-nuevo.module.js"></script>
+    <script src="./core/usuarios/usuario-nuevo/usuario-nuevo.component.js"></script>
+    <script src="./core/usuarios/usuario-editar/usuario-editar.module.js"></script>
+    <script src="./core/usuarios/usuario-editar/usuario-editar.component.js"></script>
+    <!-- Scripts - Sesiones -->
+    <script src="./core/sesiones/sesiones.module.js"></script>
+    <script src="./core/sesiones/sesion-ingresar/sesion-ingresar.module.js"></script>
+    <script src="./core/sesiones/sesion-ingresar/sesion-ingresar.component.js"></script>
+    <script src="./core/sesiones/sesion-carrito/sesion-carrito.module.js"></script>
+    <script src="./core/sesiones/sesion-carrito/sesion-carrito.component.js"></script>
+    <!-- Scripts - Layouts -->
+    <script src="./layouts/layouts.module.js"></script>
+    <script src="./layouts/sidenav/sidenav.module.js"></script>
+    <script src="./layouts/sidenav/sidenav.component.js"></script>
+</head>
+
+<body ng-cloack>
+    <side-nav class="display-flex"></side-nav>
+    <md-content flex>
+        <div ng-view></div>
+    </md-content>
+</body>
+
+</html>

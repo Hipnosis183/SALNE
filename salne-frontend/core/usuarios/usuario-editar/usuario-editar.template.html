@@ -1,0 +1,53 @@
+<div layout-padding>
+    <div class="page-header">
+        <h1 class="page-title">Editar información del usuario</h1>
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="$root.goBack()">&lt; Cancelar</md-button>
+        <md-button class="md-raised md-primary" ng-click="usuarioEditar()">Actualizar</md-button>
+    </div>
+    <md-content>
+        <md-card class="card-large">
+            <md-card-title>
+                <md-card-title-text>
+                    <form name="usuarioForm" encType="multipart/form-data">
+                        <md-input-container class="md-block">
+                            <input type="text" name="nombre" ng-model="usuario.nombre" placeholder="Nombre"
+                                md-no-asterisk required maxlength="50">
+                            <div ng-messages="usuarioForm.nombre.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <input type="email" name="email" ng-model="usuario.email" placeholder="Correo electrónico"
+                                md-no-asterisk required maxlength="100">
+                            <div ng-messages="usuarioForm.email.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="email">La dirección de correo es incorrecta.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <input type="password" name="password" ng-model="usuario.password" placeholder="Contraseña"
+                                md-no-asterisk required ng-minlength="4" maxlength="100">
+                            <div ng-messages="usuarioForm.password.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="minlength">La contraseña debe tener al menos 4 caracteres.</div>
+                            </div>
+                        </md-input-container>
+                        <div class="page-header">
+                            <p class="input-text">Imágen de usuario</p>
+                            <input id="imagen" hidden="true" type="file" accept="image/png, image/jpeg"
+                                fileinput="file" filepreview="filepreview">
+                            <md-button class="md-raised md-primary">
+                                <label class="input-button" for="imagen">Seleccionar...</label>
+                            </md-button>
+                        </div>
+                    </form>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <img ng-if="filepreview" ng-src="{{ filepreview }}" class="img-cover img-square-large">
+                    <img ng-if="!filepreview" ng-src="{{ getImage() }}" class="img-cover img-square-large">
+                </md-card-title-media>
+            </md-card-title>
+        </md-card>
+    </md-content>
+</div>

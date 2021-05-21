@@ -1,0 +1,24 @@
+<md-sidenav class="md-sidenav-left" md-component-id="left"
+        md-whiteframe="1" md-is-locked-open="$mdMedia('min-width: 800px')">
+    <md-toolbar class="sidenav-header">
+        <p class="sidenav-title">SALNE</p>
+    </md-toolbar>
+    <md-content layout-padding>
+        <a id="sidenav-inicio" class="md-button sidenav-button" ng-href="#!/">Inicio</a>
+        <br><br>
+        <a id="sidenav-ingresar" class="md-button sidenav-button"
+            ng-click="ingresar()" ng-if="!$root.usuarioSesion">Ingresar</a>
+        <a id="sidenav-registrarse" class="md-button sidenav-button"
+            ng-click="registrarse()" ng-if="!$root.usuarioSesion">Registrarse</a>
+        <a id="sidenav-cuenta" class="md-button sidenav-button"
+            ng-click="cuenta()" ng-if="$root.usuarioSesion">Cuenta</a>
+        <a id="sidenav-carrito" class="md-button sidenav-button"
+            ng-click="carrito()" ng-if="$root.usuarioSesion && !$root.usuarioSesion.admin">Carrito</a>
+        <a id="sidenav-salir" class="md-button sidenav-button"
+            ng-click="$root.salir()" ng-if="$root.usuarioSesion">Salir</a>
+        <br><br>
+        <a id="sidenav-libros" class="md-button sidenav-button" ng-href="#!/libros">Libros</a>
+        <a id="sidenav-autores" class="md-button sidenav-button" ng-href="#!/autores">Autores</a>
+        <a id="sidenav-generos" class="md-button sidenav-button" ng-href="#!/generos">Géneros</a>
+    </md-content>
+</md-sidenav>

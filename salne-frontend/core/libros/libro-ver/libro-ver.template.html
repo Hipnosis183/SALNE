@@ -1,0 +1,55 @@
+<div layout-padding>
+    <div class="page-header">
+        <h1 class="page-title" ng-if="!$root.usuarioSesion.admin">Información del libro</h1>
+        <h1 class="page-title" ng-if="$root.usuarioSesion.admin">Detalles del libro</h1>
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="$root.goBack()">&lt; Volver</md-button>
+        <md-button class="md-raised md-warn md-disabled" ng-if="enBiblioteca()">En la biblioteca</md-button>
+        <md-button class="md-raised md-primary" ng-click="carritoAnadir()"
+            ng-if="$root.usuarioSesion && !$root.usuarioSesion.admin
+                && !carritoExiste() && !enBiblioteca()">Agregar al carrito</md-button>
+        <md-button class="md-raised md-primary" ng-click="carritoEliminar()"
+            ng-if="$root.usuarioSesion && !$root.usuarioSesion.admin
+                && carritoExiste() && !enBiblioteca()">Eliminar del carrito</md-button>
+        <md-button class="md-raised md-primary" ng-click="libroEditar()"
+            ng-if="$root.usuarioSesion.admin">Editar información</md-button>
+        <md-button class="md-raised md-primary" ng-click="libroBorrar()"
+            ng-if="$root.usuarioSesion.admin">Eliminar libro</md-button>
+    </div>
+    <md-content>
+        <md-card class="card-large">
+            <md-card-title>
+                <md-card-title-text>
+                    <ul>
+                        <li class="data-element">
+                            <p class="data-content">Título</p> {{ libro.titulo }}
+                        </li>
+                        <li class="data-element">
+                            <p class="data-content">Descripción</p> {{ libro.descrip }}
+                        </li>
+                        <li class="data-element">
+                            <p class="data-content">Autor</p>
+                            <a href="#!/autores/{{ libro.autor._id }}">{{ libro.autor.nombre }}</a>
+                        </li>
+                        <li class="data-element">
+                            <p class="data-content">Edición</p> {{ libro.edicion }}
+                        </li>
+                        <li class="data-element">
+                            <p class="data-content">Año</p> {{ libro.ano }}
+                        </li>
+                        <li class="data-element">
+                            <p class="data-content">Género</p>
+                            <a href="#!/generos/{{ libro.genero._id }}">{{ libro.genero.nombre }}</a>
+                        </li>
+                        <li class="data-element">
+                            <p class="data-content">ISBN</p> {{ libro.isbn }}
+                        </li>
+                    </ul>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <img class="img-cover img-tall-large" ng-src="{{ getImage() }}">
+                </md-card-title-media>
+            </md-card-title>
+        </md-card>
+    </md-content>
+</div>

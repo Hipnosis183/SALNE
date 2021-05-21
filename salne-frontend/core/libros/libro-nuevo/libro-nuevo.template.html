@@ -1,0 +1,82 @@
+<div layout-padding>
+    <div class="page-header">
+        <h1 class="page-title">Registrar nuevo libro</h1>
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="$root.goBack()">&lt; Cancelar</md-button>
+        <md-button class="md-raised md-primary" ng-click="libroNuevo()">Añadir</md-button>
+    </div>
+    <md-content>
+        <md-card class="card-large">
+            <md-card-title>
+                <md-card-title-text>
+                    <form name="libroForm" encType="multipart/form-data">
+                        <md-input-container class="md-block">
+                            <input type="text" name="titulo" ng-model="libro.titulo" placeholder="Título"
+                                md-no-asterisk required maxlength="100">
+                            <div ng-messages="libroForm.titulo.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <input type="text" name="descrip" ng-model="libro.descrip" placeholder="Descripción"
+                                md-no-asterisk required md-maxlength="300">
+                            <div ng-messages="libroForm.descrip.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Autor</label>
+                            <md-select name="autor" ng-model="libro.autor" md-no-asterisk required>
+                                <md-option ng-repeat="autor in autores track by autor._id"
+                                    ng-value="autor._id">{{ autor.nombre }}</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <input type="text" name="edicion" ng-model="libro.edicion" placeholder="Edición"
+                                md-no-asterisk required maxlength="20">
+                            <div ng-messages="libroForm.edicion.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <input type="number" name="ano" ng-model="libro.ano" placeholder="Año"
+                                md-no-asterisk required ng-minlength="4" ng-maxlength="4" md-maxlength="4">
+                            <div ng-messages="libroForm.ano.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="minlength">Este campo debe tener 4 caracteres.</div>
+                                <div ng-message="maxlength">Este campo debe tener 4 caracteres.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Género</label>
+                            <md-select name="genero" ng-model="libro.genero" md-no-asterisk required>
+                                <md-option ng-repeat="genero in generos track by genero._id"
+                                    ng-value="genero._id">{{ genero.nombre }}</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <input type="number" name="isbn" ng-model="libro.isbn" placeholder="ISBN"
+                                md-no-asterisk required ng-minlength="10" ng-maxlength="13" md-maxlength="13">
+                            <div ng-messages="libroForm.isbn.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="minlength">Este campo debe tener entre 10 y 13 caracteres.</div>
+                                <div ng-message="maxlength">Este campo debe tener entre 10 y 13 caracteres.</div>
+                            </div>
+                        </md-input-container>
+                        <div class="page-header">
+                            <p class="input-text">Imágen de portada</p>
+                            <input id="imagen" hidden="true" type="file" accept="image/png, image/jpeg"
+                                fileinput="file" filepreview="filepreview">
+                            <md-button class="md-raised md-primary">
+                                <label class="input-button" for="imagen">Seleccionar...</label>
+                            </md-button>
+                        </div>
+                    </form>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <img class="img-cover img-tall-large" ng-src="{{ filepreview }}">
+                </md-card-title-media>
+            </md-card-title>
+        </md-card>
+    </md-content>
+</div>

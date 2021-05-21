@@ -7,6 +7,7 @@ var nunjucks = require('express-nunjucks');
 var session = require('express-session');
 var MongoStore = require('connect-mongo');
 var fileUpload = require('express-fileupload');
+require('dotenv').config()
 
 var AutoresRouter = require('./routes/autores');
 var GenerosRouter = require('./routes/generos');
@@ -19,7 +20,7 @@ var app = express();
 nunjucks(app, {});
 
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://127.0.0.1/libreria';
+var mongoDB = process.env.MONGO_LOCAL;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -35,7 +36,7 @@ app.use(fileUpload());
 var UsuarioModel = require('./models/usuario');
 
 app.use(session({
-    secret: '55aMKLU$%kZ3iDa$YSV4Hk4XN!7wik',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: mongoDB })

@@ -1,0 +1,27 @@
+<div layout-padding class="center-align">
+    <div class="page-header">
+        <h1 class="page-title">Novedades</h1>
+    </div>
+    <md-content class="card-grid">
+        <md-card class="card-large">
+            <md-grid-list md-cols="5" md-cols-gt-md="6" md-row-height="1:1">
+                <md-grid-tile md-rowspan="3" md-colspan="2">
+                    <a class="inherit-size" href="#!/libros/{{ libros[0]._id }}">
+                        <img class="img-cover" ng-src="{{ getImage(libros[0]) }}" layout-fill>
+                        <md-grid-tile-footer>
+                            <p>{{ libros[0].titulo }}</p>
+                        </md-grid-tile-footer>
+                    </a>
+                </md-grid-tile>
+                <md-grid-tile ng-repeat="libro in libros" ng-if="$index > 0">
+                    <a class="inherit-size" href="#!/libros/{{ libro._id }}">
+                        <img class="img-cover" ng-src="{{ getImage(libro) }}" layout-fill>
+                        <md-grid-tile-footer>
+                            <p>{{ libro.titulo }}</p>
+                        </md-grid-tile-footer>
+                    </a>
+                </md-grid-tile>
+            </md-grid-list>
+        </md-card>
+    </md-content>
+</div>

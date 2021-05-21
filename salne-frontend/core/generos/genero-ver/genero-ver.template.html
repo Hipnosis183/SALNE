@@ -1,0 +1,47 @@
+<div layout-padding>
+    <div class="page-header">
+        <h1 class="page-title" ng-if="!$root.usuarioSesion.admin">Información del género</h1>
+        <h1 class="page-title" ng-if="$root.usuarioSesion.admin">Detalles del género</h1>
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="$root.goBack()">&lt; Volver</md-button>
+        <md-button class="md-raised md-primary" ng-click="generoEditar()"
+            ng-if="$root.usuarioSesion.admin">Editar información</md-button>
+        <md-button class="md-raised md-primary" ng-click="generoBorrar()"
+            ng-if="$root.usuarioSesion.admin">Eliminar género</md-button>
+    </div>
+    <md-content>
+        <md-card class="card-large">
+            <md-card-title>
+                <md-card-title-text>
+                    <ul>
+                        <li class="data-element">
+                            <p class="data-content">Nombre</p> {{ genero.nombre }}
+                        </li>
+                    </ul>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <img class="img-cover img-square-small" ng-src="{{ getImage() }}">
+                </md-card-title-media>
+            </md-card-title>
+        </md-card>
+        <md-card>
+            <div class="data-header">
+                <p class="data-content data-title">Libros en categoría</p>
+                <span flex></span>
+                <span class="material-icons">&#xe8b6</span>
+                <md-input-container class="search-input">
+                    <input ng-model="search" placeholder="Buscar...">
+                </md-input-container>
+            </div>
+            <div class="book-showcase">
+                <div ng-if="!libros.length > 0"><p>Este género no tiene libros registrados a su tipo.</p><br></div>
+                <div ng-repeat="libro in libros | filter: { titulo: search }" class="book-element">
+                    <a href="#!/libros/{{ libro._id }}">
+                        <img class="img-cover img-tall-small" ng-src="{{ getImage(libro) }}">
+                        <p class="book-title">{{ libro.titulo }}</p>
+                    </a>
+                </div>
+            </div>
+        </md-card>
+    </md-content>
+</div>

@@ -1,0 +1,19 @@
+{
+  "name": "salne-angular",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.8.2",
+    "angular-animate": "^1.8.2",
+    "angular-aria": "^1.8.2",
+    "angular-cookies": "^1.8.2",
+    "angular-material": "^1.2.2",
+    "angular-messages": "^1.8.2",
+    "angular-resource": "^1.8.2",
+    "angular-route": "^1.8.2"
+  }
+}

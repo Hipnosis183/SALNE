@@ -1,0 +1,32 @@
+<div layout-padding>
+    <div class="page-header">
+        <h1 class="page-title">Iniciar sesión</h1>
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="$root.goBack()">&lt; Volver</md-button>
+        <md-button class="md-raised md-primary" ng-click="ingresar()">Ingresar</md-button>
+    </div>
+    <md-content>
+        <md-card class="card-large">
+            <md-card-title>
+                <md-card-title-text>
+                    <form name="sesionForm" encType="multipart/form-data">
+                        <md-input-container class="md-block">
+                            <input type="email" name="email" ng-model="sesion.email" placeholder="Correo electrónico"
+                                md-no-asterisk required maxlength="100">
+                            <div ng-messages="sesionForm.email.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <input type="password" name="password" ng-model="sesion.password" placeholder="Contraseña"
+                                md-no-asterisk required maxlength="100">
+                            <div ng-messages="sesionForm.password.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                            </div>
+                        </md-input-container>
+                    </form>
+                </md-card-title-text>
+            </md-card-title>
+        </md-card>
+    </md-content>
+</div>

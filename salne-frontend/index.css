@@ -1,0 +1,258 @@
+/* Elements */
+a {
+    color: royalblue;
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+    font-family: 'Ubuntu', sans-serif;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+img {
+    border: solid royalblue 2px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Biblioteca */
+.book-element {
+    display: inline-block;
+    margin: 20px;
+    vertical-align: top;
+    width: 200px;
+}
+
+.book-showcase {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.book-title {
+    margin: 0px;
+    width: inherit;
+    word-break: break-word;
+}
+
+/* Contenido */
+.data-element {
+    margin-bottom: 20px;
+}
+
+.data-content {
+    color: royalblue;
+    font-size: 26px;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.data-header {
+    align-items: center;
+    display: flex;
+    padding: 0px 25px;
+}
+
+.data-title {
+    margin-bottom: 26px;
+}
+
+/* Inputs */
+.input-button {
+    cursor: pointer;
+    display: flex;
+}
+
+.input-text {
+    letter-spacing: 0.01em;
+    margin-right: 15px;
+}
+
+/* Imágenes */
+.img-cover {
+    object-fit: cover;
+}
+
+.img-square-small {
+    height: 100px;
+    width: 100px;
+}
+
+.img-square-medium {
+    height: 200px;
+    width: 200px;
+}
+
+.img-square-large {
+    height: 300px;
+    width: 300px;
+}
+
+.img-tall-small {
+    height: 300px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+.img-tall-large {
+    height: 600px;
+    width: 400px;
+}
+
+/* Otros */
+.center-align {
+    text-align: center;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.inherit-size {
+    height: inherit;
+    width: inherit;
+}
+
+/* Página */
+.page-header {
+    align-items: center;
+    display: flex;
+}
+
+.page-title {
+    font-size: 28px;
+    margin: 0px 20px;
+    font-weight: 400;
+}
+
+/* Sidenav */
+.sidenav-button {
+    width: -webkit-fill-available;
+}
+
+.sidenav-title {
+    align-self: center;
+    color: white;
+    font-size: 28px;
+    margin: auto;
+}
+
+/* Material - Buttons */
+.md-button.md-primary.md-raised {
+    color: white;
+    background-color: royalblue;
+    padding: 2px 10px;
+}
+
+.md-button.md-warn.md-raised.md-disabled {
+    color: white;
+    cursor: unset;
+    padding: 2px 10px;
+}
+
+.md-button.sidenav-button:hover {
+    background-color: lightsteelblue;
+}
+
+.md-button.sidenav-button.active {
+    background-color: lightsteelblue;
+}
+
+/* Material - Cards */
+md-content.card-grid {
+    padding: 20px;
+}
+
+md-card.card-small md-card-title {
+    align-items: center;
+    padding: 0px;
+}
+
+md-card.card-small md-card-title md-card-title-text {
+    padding: 20px;
+}
+
+md-card.card-large md-card-title {
+    align-items: center;
+    padding: 20px;
+}
+
+md-card.card-large md-card-title md-card-title-text {
+    padding: 0px 20px;
+}
+
+md-card md-card-title md-card-title-text .md-headline {
+    font-size: 26px;
+    line-height: 40px;
+}
+
+md-card md-card-title md-card-title-text .md-subhead {
+    font-size: 16px;
+}
+
+md-card md-card-title md-card-title-media {
+    margin: 0px;
+}
+
+/* Material - Dialogs */
+md-dialog {
+    align-items: center;
+}
+
+md-dialog .md-dialog-content {
+    padding: 20px;
+    padding-bottom: 0px;
+}
+
+md-dialog md-dialog-actions {
+    padding: 0px;
+}
+
+md-dialog md-dialog-actions .md-button {
+    margin: 20px;
+}
+
+/* Material - Grids */
+md-grid-list md-grid-tile md-grid-tile-footer {
+    align-items: flex-end;
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.5) 100%);
+    display: grid;
+    height: -webkit-fill-available;
+    padding: 0px 10px;
+}
+
+md-grid-tile img {
+    border: none;
+}
+
+/* Material - Inputs */
+md-input-container {
+    letter-spacing: 0.01em;
+}
+
+md-input-container.search-input {
+    margin: 0px 10px;
+}
+
+md-input-container.search-input .md-errors-spacer {
+    display: none;
+}
+
+md-input-container > md-select {
+    margin-bottom: 24px;
+}
+
+/* Material - Sidenav */
+md-sidenav {
+    width: 220px;
+}
+
+md-toolbar.sidenav-header {
+    background-color: royalblue;
+}

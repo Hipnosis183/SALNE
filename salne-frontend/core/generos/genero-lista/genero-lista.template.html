@@ -1,0 +1,31 @@
+<div layout-padding>
+    <div class="page-header">
+        <h1 class="page-title" ng-if="!$root.usuarioSesion.admin">Géneros</h1>
+        <h1 class="page-title" ng-if="$root.usuarioSesion.admin">Gestión de géneros</h1>
+        <span flex></span>
+        <span class="material-icons">&#xe8b6</span>
+        <md-input-container class="search-input">
+            <input ng-model="search" placeholder="Buscar...">
+        </md-input-container>
+        <md-button class="md-raised md-primary" href="#!/generos/generoNuevo"
+            ng-if="$root.usuarioSesion.admin">Registrar nuevo género</md-button>
+    </div>
+    <ul class="lista-catalogos">
+        <li ng-repeat="genero in generos | filter: { nombre: search }">
+            <md-content>
+                <md-card class="card-small">
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">
+                                <a href="#!/generos/{{ genero._id }}">{{ genero.nombre }}</a>
+                            </span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                            <img class="md-media-sm img-cover" ng-src="{{ getImage(genero) }}">
+                        </md-card-title-media>
+                    </md-card-title>
+                </md-card>
+            </md-content>
+        </li>
+    </ul>
+</div>
